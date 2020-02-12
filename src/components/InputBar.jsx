@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) {
+function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, messages, setMessages }) {
   const classes = useStyles();
 
   // input field stateful component
@@ -65,6 +65,12 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
   // function handling submitting username
   function handleSubmit(event) {
     event.preventDefault();
+
+    // check if input matches that of a random question
+    // if yes, increment the number of random questions asked
+    if (randomQuestions.includes(inputValue)) {
+      setRandomQuestionsAsked(randomQuestionsAsked + 1);
+    }
 
     // create new message object and add it to the messages array
     const message = {
@@ -111,6 +117,7 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
 
 InputBar.propTypes = {
   username: PropTypes.string.isRequired,
+  randomQuestionsAsked: PropTypes.number.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
   messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   setMessages: PropTypes.func.isRequired,

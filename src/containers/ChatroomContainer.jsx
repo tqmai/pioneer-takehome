@@ -112,7 +112,11 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
             ! Click on one of the rooms on the left to join a conversation.
           </Typography>
         ) : (
-          <ChatboxContainer username={username} setRandomQuestionsAsked={setRandomQuestionsAsked} />
+          <ChatboxContainer
+            username={username}
+            randomQuestionsAsked={randomQuestionsAsked}
+            setRandomQuestionsAsked={setRandomQuestionsAsked}
+          />
         )}
       </main>
     </div>

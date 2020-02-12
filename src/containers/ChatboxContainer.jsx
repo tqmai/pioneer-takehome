@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ChatboxContainer({ username, setRandomQuestionsAsked }) {
+function ChatboxContainer({ username, randomQuestionsAsked, setRandomQuestionsAsked }) {
   const classes = useStyles();
 
   const [messages, setMessages] = useState([]);
@@ -44,6 +44,7 @@ function ChatboxContainer({ username, setRandomQuestionsAsked }) {
       <div className={classes.inputBar}>
         <InputBar
           username={username}
+          randomQuestionsAsked={randomQuestionsAsked}
           setRandomQuestionsAsked={setRandomQuestionsAsked}
           messages={messages}
           setMessages={setMessages}
@@ -55,6 +56,7 @@ function ChatboxContainer({ username, setRandomQuestionsAsked }) {
 
 ChatboxContainer.propTypes = {
   username: PropTypes.string.isRequired,
+  randomQuestionsAsked: PropTypes.number.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
 };
 
