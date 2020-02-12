@@ -1,7 +1,7 @@
 ## Pioneer Take-Home Assignment
 By Tim Mai
 
-Instructions to run app:
+Run the following commands (in order) to start the app:
 
 #### `yarn install`
 #### `yarn server`
