@@ -17,6 +17,10 @@ import InputBar from '../components/InputBar';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  messageArea: {
+    height: '100%',
+    marginBottom: '75px',
+  },
   inputBar: {
     position: 'fixed',
     bottom: 0,
