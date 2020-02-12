@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * ************************************
  *
@@ -11,6 +12,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import io from 'socket.io-client';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageArea from '../components/MessageArea';
 import InputBar from '../components/InputBar';
@@ -34,7 +36,30 @@ const useStyles = makeStyles({
 function ChatboxContainer({ username, randomQuestionsAsked, setRandomQuestionsAsked }) {
   const classes = useStyles();
 
+  // store messages in an array in state
   const [messages, setMessages] = useState([]);
+
+  // connecting to the server on the client side
+  const socket = io('localhost:3001/');
+
+  // function to send message (to be passed as a prop to inputBar)
+  function sendMessage(inputValue) {
+    console.log('message sent:', inputValue);
+
+    // create new message object to add to the messages array in state
+    const newMessage = {
+      username,
+      message: inputValue,
+    };
+
+    const newMessages = [...messages, newMessage];
+
+    // adds new message to state
+    setMessages(newMessages);
+
+    // emit message via socket
+    socket.emit('sendMessage', newMessage);
+  }
 
   return (
     <div>
@@ -46,6 +71,7 @@ function ChatboxContainer({ username, randomQuestionsAsked, setRandomQuestionsAs
           username={username}
           randomQuestionsAsked={randomQuestionsAsked}
           setRandomQuestionsAsked={setRandomQuestionsAsked}
+          sendMessage={sendMessage}
           messages={messages}
           setMessages={setMessages}
         />

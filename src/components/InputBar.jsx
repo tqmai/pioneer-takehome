@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, messages, setMessages }) {
+function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, sendMessage }) {
   const classes = useStyles();
 
   // input field stateful component
@@ -72,16 +72,8 @@ function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, mes
       setRandomQuestionsAsked(randomQuestionsAsked + 1);
     }
 
-    // create new message object and add it to the messages array
-    const message = {
-      username,
-      message: inputValue,
-    };
-
-    const newMessages = [...messages, message];
-
-    // adds new message to state
-    setMessages(newMessages);
+    // sends message via socket
+    sendMessage(inputValue);
 
     setInputValue('');
   }
@@ -119,8 +111,7 @@ InputBar.propTypes = {
   username: PropTypes.string.isRequired,
   randomQuestionsAsked: PropTypes.number.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
-  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setMessages: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
 };
 
 export default InputBar;
