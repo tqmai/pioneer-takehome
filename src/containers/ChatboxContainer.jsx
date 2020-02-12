@@ -10,11 +10,12 @@
  */
 
 import React from 'react';
+import InputBar from '../components/InputBar';
 
 function ChatboxContainer() {
   return (
     <div>
-      chatbox container
+      <InputBar />
     </div>
   );
 }
