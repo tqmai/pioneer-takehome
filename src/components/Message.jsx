@@ -13,10 +13,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 
-function Message({ username, message}) {
+function Message({ username, message }) {
   return (
     <div>
-      Message
+      <Typography variant="body1" color="primary" display="inline">
+        {username}
+        {': '}
+      </Typography>
+      <Typography variant="body1" display="inline">
+        {message}
+      </Typography>
     </div>
   );
 }
@@ -24,6 +30,6 @@ function Message({ username, message}) {
 Message.propTypes = {
   username: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-}
+};
 
 export default Message;

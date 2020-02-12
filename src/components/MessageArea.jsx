@@ -16,7 +16,7 @@ import Message from './Message';
 function MessageArea() {
   return (
     <div>
-      <Message />
+      <Message username="Tim" message="hi" />
     </div>
   );
 }
