@@ -11,6 +11,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -77,13 +78,13 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          <ListItem button key="Home">
+          <ListItem button key="Home" component={RouterLink} to="/home">
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button key="General">
+          <ListItem button key="General" component={RouterLink} to="/general">
             <ListItemText primary="General" />
           </ListItem>
-          <ListItem button key="Ideas">
+          <ListItem button key="Ideas" component={RouterLink} to="/ideas">
             <ListItemText primary="Ideas" />
           </ListItem>
         </List>
