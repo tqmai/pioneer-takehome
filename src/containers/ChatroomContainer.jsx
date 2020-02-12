@@ -57,6 +57,14 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
   // counter for number of random questions asked
   const [randomQuestionsAsked, setRandomQuestionsAsked] = useState(0);
 
+  // store messages in an array in state
+  const [messages, setMessages] = useState([]);
+
+  // clears messages when moving between chatrooms
+  function clearMessages() {
+    setMessages([]);
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -81,10 +89,10 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
           <ListItem button key="Home" component={RouterLink} to="/home">
             <ListItemText primary="Home" />
           </ListItem>
-          <ListItem button key="General" component={RouterLink} to="/general">
+          <ListItem button key="General" onClick={clearMessages} component={RouterLink} to="/general">
             <ListItemText primary="General" />
           </ListItem>
-          <ListItem button key="Ideas" component={RouterLink} to="/ideas">
+          <ListItem button key="Ideas" onClick={clearMessages} component={RouterLink} to="/ideas">
             <ListItemText primary="Ideas" />
           </ListItem>
         </List>
@@ -117,6 +125,8 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
             username={username}
             randomQuestionsAsked={randomQuestionsAsked}
             setRandomQuestionsAsked={setRandomQuestionsAsked}
+            messages={messages}
+            setMessages={setMessages}
           />
         )}
       </main>

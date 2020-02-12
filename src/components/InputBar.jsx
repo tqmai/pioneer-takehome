@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, sendMessage }) {
+function InputBar({ randomQuestionsAsked, setRandomQuestionsAsked, sendMessage }) {
   const classes = useStyles();
 
   // input field stateful component
@@ -108,7 +108,6 @@ function InputBar({ username, randomQuestionsAsked, setRandomQuestionsAsked, sen
 }
 
 InputBar.propTypes = {
-  username: PropTypes.string.isRequired,
   randomQuestionsAsked: PropTypes.number.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,

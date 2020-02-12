@@ -10,7 +10,7 @@
  * ************************************
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,11 +33,14 @@ const useStyles = makeStyles({
   },
 });
 
-function ChatboxContainer({ username, randomQuestionsAsked, setRandomQuestionsAsked }) {
+function ChatboxContainer({
+  username,
+  randomQuestionsAsked,
+  setRandomQuestionsAsked,
+  messages,
+  setMessages,
+}) {
   const classes = useStyles();
-
-  // store messages in an array in state
-  const [messages, setMessages] = useState([]);
 
   // connecting to the server on the client side
   const socket = io('localhost:3001/');
@@ -60,6 +63,17 @@ function ChatboxContainer({ username, randomQuestionsAsked, setRandomQuestionsAs
     // emit message via socket
     socket.emit('sendMessage', newMessage);
   }
+
+  // function for receiving messages sent via socket
+  socket.on('receiveMessage', (data) => {
+    console.log('message received', data);
+
+    // create new messages array to update state
+    const newMessages = [...messages, data];
+
+    // adds new message to state
+    setMessages(newMessages);
+  });
 
   return (
     <div>
@@ -84,6 +98,8 @@ ChatboxContainer.propTypes = {
   username: PropTypes.string.isRequired,
   randomQuestionsAsked: PropTypes.number.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setMessages: PropTypes.func.isRequired,
 };
 
 export default ChatboxContainer;
