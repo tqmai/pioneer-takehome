@@ -11,6 +11,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -64,6 +65,8 @@ function Welcome({ setUsername }) {
             variant="contained"
             className={classes.text}
             onClick={handleSubmit}
+            component={RouterLink}
+            to="/home"
           >
             Submit
           </Button>
