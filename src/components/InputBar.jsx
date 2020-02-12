@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar({ username, setRandomQuestionsAsked }) {
+function InputBar({ username, setRandomQuestionsAsked, setMessages }) {
   const classes = useStyles();
 
   return (
@@ -61,6 +61,7 @@ function InputBar({ username, setRandomQuestionsAsked }) {
 InputBar.propTypes = {
   username: PropTypes.string.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
+  setMessages: PropTypes.func.isRequired,
 };
 
 export default InputBar;

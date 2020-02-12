@@ -42,7 +42,11 @@ function ChatboxContainer({ username, setRandomQuestionsAsked }) {
         <MessageArea messages={messages} />
       </div>
       <div className={classes.inputBar}>
-        <InputBar username={username} setRandomQuestionsAsked={setRandomQuestionsAsked} />
+        <InputBar
+          username={username}
+          setRandomQuestionsAsked={setRandomQuestionsAsked}
+          setMessages={setMessages}
+        />
       </div>
     </div>
   );
