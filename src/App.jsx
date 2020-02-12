@@ -15,13 +15,13 @@ import ChatroomContainer from './containers/ChatroomContainer';
 
 function App() {
   // variable to keep track of username
-  // const [username, setUsername] = useState('friend');
+  const [username, setUsername] = useState('friend');
 
   return (
     <div>
       {/* <Welcome setUsername={setUsername} /> */}
       {/* <Welcome /> */}
-      <ChatroomContainer username="Tim" pageName="Home" />
+      <ChatroomContainer username={username} pageName="Home" />
     </div>
   );
 }
