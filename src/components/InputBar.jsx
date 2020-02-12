@@ -45,6 +45,23 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
     setInputValue(event.target.value);
   }
 
+  // list of random questions
+  const randomQuestions = [
+    'Given the choice of anyone in the world, whom would you want as a dinner guest?',
+    'If you were able to live to the age of 90 and retain either the mind or body of a 30-year-old for the last 60 years of your life, which would you want?',
+    'If you could change anything about the way you were raised, what would it be?',
+    'If you could wake up tomorrow having gained any one quality or ability, what would it be?',
+    'What inspired you to go into your current field?',
+    'Who is someone who inspires you?',
+  ];
+
+  // function to provide a random question
+  function handleRandomQuestion() {
+    // randomly choose a question from the array of questions and set it as the current input
+    const randomQuestion = randomQuestions[Math.floor(Math.random() * randomQuestions.length)];
+    setInputValue(randomQuestion);
+  }
+
   // function handling submitting username
   function handleSubmit(event) {
     event.preventDefault();
@@ -75,11 +92,12 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
           <TextField
             id="message"
             variant="filled"
+            value={inputValue}
             onChange={handleChange}
             onKeyPress={handleEnterPress}
             className={classes.input}
           />
-          <Button variant="outlined" className={classes.button}>
+          <Button variant="outlined" onClick={handleRandomQuestion} className={classes.button}>
             Random Question!
           </Button>
           <Button variant="contained" color="primary" onClick={handleSubmit}>
