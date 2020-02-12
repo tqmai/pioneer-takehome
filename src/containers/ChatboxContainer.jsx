@@ -45,6 +45,7 @@ function ChatboxContainer({ username, setRandomQuestionsAsked }) {
         <InputBar
           username={username}
           setRandomQuestionsAsked={setRandomQuestionsAsked}
+          messages={messages}
           setMessages={setMessages}
         />
       </div>

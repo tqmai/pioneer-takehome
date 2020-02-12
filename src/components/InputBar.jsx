@@ -9,7 +9,7 @@
  * ************************************
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -34,22 +34,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar({ username, setRandomQuestionsAsked, setMessages }) {
+function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) {
   const classes = useStyles();
+
+  // input field stateful component
+  const [inputValue, setInputValue] = useState('');
+
+  // function to handle input changes
+  function handleChange(event) {
+    setInputValue(event.target.value);
+  }
+
+  // function handling submitting username
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // create new message object and add it to the messages array
+    const message = {
+      username,
+      message: inputValue,
+    };
+
+    const newMessages = [...messages, message];
+
+    // adds new message to state
+    setMessages(newMessages);
+
+    setInputValue('');
+  }
 
   return (
     <div className={classes.root}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <span>
           <TextField
             id="message"
             variant="filled"
+            onChange={handleChange}
             className={classes.input}
           />
           <Button variant="outlined" className={classes.button}>
             Random Question!
           </Button>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             Send
           </Button>
         </span>
@@ -61,6 +88,7 @@ function InputBar({ username, setRandomQuestionsAsked, setMessages }) {
 InputBar.propTypes = {
   username: PropTypes.string.isRequired,
   setRandomQuestionsAsked: PropTypes.func.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
   setMessages: PropTypes.func.isRequired,
 };
 
