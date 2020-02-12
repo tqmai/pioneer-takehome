@@ -21,7 +21,7 @@ function App() {
     <div>
       {/* <Welcome setUsername={setUsername} /> */}
       {/* <Welcome /> */}
-      <ChatroomContainer />
+      <ChatroomContainer username="Tim" pageName="Home" />
     </div>
   );
 }

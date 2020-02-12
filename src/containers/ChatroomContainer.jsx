@@ -10,9 +10,10 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline'; // add to main app
+import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ChatroomContainer() {
+function ChatroomContainer({ username, pageName }) {
   // this is used for Material-UI to access the CSS we defined above
   const classes = useStyles();
 
@@ -58,7 +59,7 @@ function ChatroomContainer() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Home
+            {pageName}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -100,10 +101,15 @@ function ChatroomContainer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ChatboxContainer />
+        <ChatboxContainer username={username} />
       </main>
     </div>
   );
 }
+
+ChatroomContainer.propTypes = {
+  username: PropTypes.string.isRequired,
+  pageName: PropTypes.string.isRequired,
+};
 
 export default ChatroomContainer;
