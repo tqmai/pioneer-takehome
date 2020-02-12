@@ -9,12 +9,16 @@
  * ************************************
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import Welcome from './components/Welcome';
 
 function App() {
+  // variable to keep track of username
+  // const [username, setUsername] = useState('friend');
+
   return (
     <div>
+      {/* <Welcome setUsername={setUsername} /> */}
       <Welcome />
     </div>
   );
