@@ -63,6 +63,11 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
     setInputValue('');
   }
 
+  // function handling user pressing enter
+  function handleEnterPress(event) {
+    return event.keyCode === 13 ? handleSubmit() : null;
+  }
+
   return (
     <div className={classes.root}>
       <form onSubmit={handleSubmit}>
@@ -71,6 +76,7 @@ function InputBar({ username, setRandomQuestionsAsked, messages, setMessages }) 
             id="message"
             variant="filled"
             onChange={handleChange}
+            onKeyPress={handleEnterPress}
             className={classes.input}
           />
           <Button variant="outlined" className={classes.button}>

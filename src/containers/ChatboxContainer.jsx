@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 function ChatboxContainer({ username, setRandomQuestionsAsked }) {
   const classes = useStyles();
 
-  const [messages, setMessages] = useState([{username: 'Tim', message: 'hi'}]);
+  const [messages, setMessages] = useState([]);
 
   return (
     <div>
