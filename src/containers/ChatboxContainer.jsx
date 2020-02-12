@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageArea from '../components/MessageArea';
 import InputBar from '../components/InputBar';
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-function ChatboxContainer() {
+function ChatboxContainer({ username }) {
   const classes = useStyles();
 
   const messages = [{username: 'Tim', message: 'hi'}];
@@ -41,10 +42,14 @@ function ChatboxContainer() {
         <MessageArea messages={messages} />
       </div>
       <div className={classes.inputBar}>
-        <InputBar />
+        <InputBar username={username} />
       </div>
     </div>
   );
 }
+
+ChatboxContainer.propTypes = {
+  username: PropTypes.string.isRequired,
+};
 
 export default ChatboxContainer;
