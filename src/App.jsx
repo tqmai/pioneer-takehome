@@ -19,9 +19,8 @@ function App() {
 
   return (
     <div>
-      {/* <Welcome setUsername={setUsername} /> */}
-      {/* <Welcome /> */}
-      <ChatroomContainer username={username} pageName="Home" />
+      <Welcome setUsername={setUsername} />
+      {/* <ChatroomContainer pageName="Home" hasChatbox={true} username={username} /> */}
     </div>
   );
 }

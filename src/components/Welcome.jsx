@@ -9,8 +9,8 @@
  * ************************************
  */
 
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -28,9 +28,22 @@ const useStyles = makeStyles({
   },
 });
 
-function Welcome() {
+function Welcome({ setUsername }) {
   // this is used for Material-UI to access the CSS we defined above
   const classes = useStyles();
+
+  // input field stateful component
+  const [input, setInput] = useState('');
+
+  // function handling input changes
+  function handleChange(event) {
+    setInput(event.target.value);
+  }
+
+  // function handling form submission
+  function handleSubmit() {
+    setUsername(input);
+  }
 
   return (
     <Container maxWidth="sm">
@@ -38,16 +51,19 @@ function Welcome() {
         <Typography variant="h4">
           Welcome! What is your name?
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit}>
           <TextField
             id="name"
             label="Name"
+            value={input}
+            onChange={handleChange}
             fullWidth
             className={classes.text}
           />
           <Button
             variant="contained"
             className={classes.text}
+            onClick={handleSubmit}
           >
             Submit
           </Button>
@@ -56,5 +72,9 @@ function Welcome() {
     </Container>
   );
 }
+
+Welcome.propTypes = {
+  setUsername: PropTypes.func.isRequired,
+};
 
 export default Welcome;
