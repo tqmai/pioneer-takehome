@@ -11,6 +11,7 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import MessageArea from '../components/MessageArea';
 import InputBar from '../components/InputBar';
 
 const drawerWidth = 240;
@@ -30,7 +31,12 @@ function ChatboxContainer() {
 
   return (
     <div>
-      <InputBar className={classes.inputBar} />
+      <div>
+        <MessageArea />
+      </div>
+      <div className={classes.inputBar}>
+        <InputBar />
+      </div>
     </div>
   );
 }
