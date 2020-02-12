@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ChatroomContainer({ username, pageName }) {
+function ChatroomContainer({ pageName, hasChatbox, username }) {
   // this is used for Material-UI to access the CSS we defined above
   const classes = useStyles();
 
@@ -101,15 +101,25 @@ function ChatroomContainer({ username, pageName }) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ChatboxContainer username={username} />
+        {!hasChatbox ? (
+          <Typography>
+            Welcome to the Pioneer chatrooms,
+            {' '}
+            {username}
+            ! Click on one of the rooms on the left to join a conversation.
+          </Typography>
+        ) : (
+          <ChatboxContainer username={username} />
+        )}
       </main>
     </div>
   );
 }
 
 ChatroomContainer.propTypes = {
-  username: PropTypes.string.isRequired,
   pageName: PropTypes.string.isRequired,
+  hasChatbox: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default ChatroomContainer;
