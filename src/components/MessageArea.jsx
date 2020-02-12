@@ -11,11 +11,12 @@
  */
 
 import React from 'react';
+import Message from './Message';
 
 function MessageArea() {
   return (
     <div>
-      MessageArea
+      <Message />
     </div>
   );
 }
