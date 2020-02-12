@@ -33,10 +33,12 @@ const useStyles = makeStyles((theme) => ({
 function ChatboxContainer() {
   const classes = useStyles();
 
+  const messages = [{username: 'Tim', message: 'hi'}];
+
   return (
     <div>
-      <div>
-        <MessageArea />
+      <div className={classes.messageArea}>
+        <MessageArea messages={messages} />
       </div>
       <div className={classes.inputBar}>
         <InputBar />

@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable react/no-array-index-key */
 /**
  * ************************************
@@ -11,14 +12,23 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Message from './Message';
 
-function MessageArea() {
+function MessageArea({ messages }) {
+  const formattedMessages = messages.map(({ username, message }, index) => {
+    return <Message key={index} username={username} message={message} />;
+  });
+
   return (
     <div>
-      <Message username="Tim" message="hi" />
+      {formattedMessages}
     </div>
   );
 }
+
+MessageArea.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MessageArea;
