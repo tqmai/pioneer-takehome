@@ -9,7 +9,7 @@
  * ************************************
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -53,6 +53,9 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
   // this is used for Material-UI to access the CSS we defined above
   const classes = useStyles();
 
+  // counter for number of random questions asked
+  const [randomQuestionsAsked, setRandomQuestionsAsked] = useState(0);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -94,7 +97,7 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
           </ListItem>
           <ListItem>
             <ListItemText>
-              0
+              {randomQuestionsAsked}
             </ListItemText>
           </ListItem>
         </List>
@@ -109,7 +112,7 @@ function ChatroomContainer({ pageName, hasChatbox, username }) {
             ! Click on one of the rooms on the left to join a conversation.
           </Typography>
         ) : (
-          <ChatboxContainer username={username} />
+          <ChatboxContainer username={username} setRandomQuestionsAsked={setRandomQuestionsAsked} />
         )}
       </main>
     </div>

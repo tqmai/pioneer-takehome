@@ -9,7 +9,7 @@
  * ************************************
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageArea from '../components/MessageArea';
@@ -31,10 +31,10 @@ const useStyles = makeStyles({
   },
 });
 
-function ChatboxContainer({ username }) {
+function ChatboxContainer({ username, setRandomQuestionsAsked }) {
   const classes = useStyles();
 
-  const messages = [{username: 'Tim', message: 'hi'}];
+  const [messages, setMessages] = useState([{username: 'Tim', message: 'hi'}]);
 
   return (
     <div>
@@ -42,7 +42,7 @@ function ChatboxContainer({ username }) {
         <MessageArea messages={messages} />
       </div>
       <div className={classes.inputBar}>
-        <InputBar username={username} />
+        <InputBar username={username} setRandomQuestionsAsked={setRandomQuestionsAsked} />
       </div>
     </div>
   );
@@ -50,6 +50,7 @@ function ChatboxContainer({ username }) {
 
 ChatboxContainer.propTypes = {
   username: PropTypes.string.isRequired,
+  setRandomQuestionsAsked: PropTypes.func.isRequired,
 };
 
 export default ChatboxContainer;
