@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function InputBar() {
+function InputBar({ username }) {
   const classes = useStyles();
 
   return (
@@ -56,5 +57,9 @@ function InputBar() {
     </div>
   );
 }
+
+InputBar.propTypes = {
+  username: PropTypes.string.isRequired,
+};
 
 export default InputBar;
