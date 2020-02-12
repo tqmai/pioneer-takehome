@@ -11,6 +11,7 @@
 
 import React, { useState } from 'react';
 import Welcome from './components/Welcome';
+import ChatroomContainer from './containers/ChatroomContainer';
 
 function App() {
   // variable to keep track of username
@@ -19,7 +20,8 @@ function App() {
   return (
     <div>
       {/* <Welcome setUsername={setUsername} /> */}
-      <Welcome />
+      {/* <Welcome /> */}
+      <ChatroomContainer />
     </div>
   );
 }
