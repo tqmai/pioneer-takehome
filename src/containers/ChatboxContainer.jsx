@@ -16,7 +16,7 @@ import InputBar from '../components/InputBar';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   messageArea: {
     height: '100%',
     marginBottom: '75px',
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: '90px',
     'background-color': 'white',
   },
-}));
+});
 
 function ChatboxContainer() {
   const classes = useStyles();
