@@ -10,13 +10,20 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 
-function Message() {
+function Message({ username, message}) {
   return (
     <div>
       Message
     </div>
   );
+}
+
+Message.propTypes = {
+  username: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
 }
 
 export default Message;
