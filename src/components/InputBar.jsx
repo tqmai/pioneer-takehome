@@ -45,7 +45,7 @@ function InputBar() {
             variant="filled"
             className={classes.input}
           />
-          <Button variant="outlined" classname={classes.button}>
+          <Button variant="outlined" className={classes.button}>
             Random Question!
           </Button>
           <Button variant="contained" color="primary">
